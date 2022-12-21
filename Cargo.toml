@@ -1,0 +1,34 @@
+[package]
+name = "cf-test"
+version = "0.0.0"
+edition = "2018"
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[features]
+default = ["console_error_panic_hook"]
+
+[dependencies]
+cfg-if = "0.1.2"
+worker = "0.0.11"
+serde_json = "1.0.67"
+bot_commands = {path="./bot_commands"}
+serde = {version="1.0", features=["derive"]}
+serde_repr = "0.1.9"
+bitflags = "1.3.2"
+ed25519-dalek = "1.0.1"
+hex = "0.4.3"
+
+# The `console_error_panic_hook` crate provides better debugging of panics by
+# logging them with `console.error`. This is great for development, but requires
+# all the `std::fmt` and `std::panicking` infrastructure, so isn't great for
+# code size when deploying.
+console_error_panic_hook = { version = "0.1.1", optional = true }
+
+[profile.release]
+# Tell `rustc` to optimize for small code size.
+opt-level = "s"
+
+[workspace]
+members = ["command_builder","bot_commands","register"]

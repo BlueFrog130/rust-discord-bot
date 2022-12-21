@@ -1,0 +1,13 @@
+[package]
+name = "register"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+clap = { version = "4.0.29", features = ["derive", "cargo", "env"] }
+bot_commands = {path="../bot_commands"}
+reqwest = {version="0.11", features=["json", "blocking"]}
+serde_json = {version="1.0"}
+serde = {version="1.0", features=["derive"]}
